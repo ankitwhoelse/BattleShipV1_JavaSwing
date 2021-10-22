@@ -3,6 +3,17 @@ package battleship;
 import java.awt.Color;
 import java.util.ArrayList;
 
+/**
+ * Solution du tp1A21 inf111
+ *
+ * Regroupe tous les SP pour gï¿½rer l'objet Navire
+ *
+ * @author Mohamed-Amine Djelloud
+ * @author Ankit Patel
+ * @version Copyright A2021
+ *
+ */
+
 public class Navire {
 
 	/*  ---------
@@ -14,16 +25,18 @@ public class Navire {
 	Coord debut;
 	Coord fin;
 	ArrayList<Coord> coupTouche;
+	ArrayList<Coord> coordNavire;
+	int direction;
 	
 	
 	/*  --------------------------
-	 *  Constructeur par paramètre
+	 *  Constructeur par paramï¿½tre
 	 */
 	public Navire(String nom, Coord debut, Coord fin, Color couleur) throws Exception {
 		
 		int ligne = fin.ligne - debut.ligne;
 		int colonne = fin.colonne - debut.colonne;
-		
+		coordNavire = new ArrayList<>();
 		// Ligne invalide
 		if (ligne+1 > Constantes.TAILLE || debut.ligne > fin.ligne ) {
 			throw new Exception("Ligne invalide");
@@ -34,11 +47,11 @@ public class Navire {
 			} else {
 				// Position Nord_Sud invalide
 				if (ligne > 1 && colonne != 0) {
-					throw new Exception("Coordonnées NORD_SUD invalide");
+					throw new Exception("Coordonnï¿½es NORD_SUD invalide");
 				} else {
 					// Position Est_Ouest invalide
-					if (colonne > 1 & colonne != 0) {
-						throw new Exception("Coordonnées EST_OUEST invalide");
+					if (colonne > 1 & ligne != 0) {
+						throw new Exception("Coordonnï¿½es EST_OUEST invalide");
 					// Tout est correct, aucune Exception
 					} else {
 						// Initialiser les attributs
@@ -46,10 +59,41 @@ public class Navire {
 						this.couleur = couleur;
 						this.debut = debut;
 						this.fin = fin;
-						if (ligne > 1) {
-							this.longeur = ligne;
+						if (ligne >= 1) {
+							//NORD_SUD
+							this.longeur = ligne +1;
+							if (debut.ligne > fin.ligne) {
+								this.direction = 0;
+								for (int i = 0; i < longeur; i++) {
+									Coord coordonne = new Coord(debut.ligne-i, debut.colonne);
+									coordNavire.add(coordonne);
+								}
+							}
+							else {
+								this.direction = 1;
+								for (int i = 0; i < longeur; i++) {
+									Coord coordonne = new Coord(debut.ligne+i, debut.colonne);
+									coordNavire.add(coordonne);
+								}
+							}
 						} else {
-							this.longeur = colonne;
+							//EST_OUEST
+
+							this.longeur = colonne +1;
+							if (debut.colonne > fin.colonne) {
+								this.direction = 3;
+								for (int i = 0; i < longeur; i++) {
+									Coord coordonne = new Coord(debut.ligne, debut.colonne-i);
+									coordNavire.add(coordonne);
+								}
+							}
+							else {
+								this.direction = 2;
+								for (int i = 0; i < longeur; i++) {
+									Coord coordonne = new Coord(debut.ligne, debut.colonne+i);
+									coordNavire.add(coordonne);
+								}
+							}
 						}
 					}
 				}				
@@ -59,7 +103,7 @@ public class Navire {
 	
 	
 	/*  ------------------
-	 *  MÉTHODES PUBLIQUES
+	 *  Mï¿½THODES PUBLIQUES
 	 */ 
 	
 	/*
@@ -77,7 +121,7 @@ public class Navire {
 	}
 	
 	/*
-	 * Retourne TRUE si le bateau a déjâ été touché au tir passé en paramètre
+	 * Retourne TRUE si le bateau a dï¿½jï¿½ ï¿½tï¿½ touchï¿½ au tir passï¿½ en paramï¿½tre
 	 * Retourne FALSE si ce n'est pas le cas 
 	 */
 	public boolean dejaRecuTir(Coord tir) {
@@ -93,17 +137,17 @@ public class Navire {
 	}
 	
 	/*
-	 * Retourne TRUE si le bateau actuel est touché par le tir passé en paramètre
+	 * Retourne TRUE si le bateau actuel est touchï¿½ par le tir passï¿½ en paramï¿½tre
 	 * Retourne FALSE si ce n'est pas le cas 
 	 */
 	public boolean tirAtouche(Coord tir) {
 		boolean tirTouche = false;
 		
-		// S'assurer que le bateau n'est pas déjâ coulé
+		// S'assurer que le bateau n'est pas dï¿½jï¿½ coulï¿½
 		if (!this.estCoule()) {
-			// S'assurer que le bateau n'a pas déjâ été touché à cet endroit 
+			// S'assurer que le bateau n'a pas dï¿½jï¿½ ï¿½tï¿½ touchï¿½ ï¿½ cet endroit 
 			if (!this.dejaRecuTir(tir)) {
-				// Évaluer si le coup à toucher le bateau
+				// ï¿½valuer si le coup ï¿½ toucher le bateau
 				if (this.positionTouche(tir)) {
 					// Ajouter le tir a la collection
 					coupTouche.add(tir);
@@ -116,15 +160,17 @@ public class Navire {
 	}
 
 	/*
-	 * Retourne TRUE si le bateau passé en paramètre se situe sur la même case que le bateau actuel
+	 * Retourne TRUE si le bateau passï¿½ en paramï¿½tre se situe sur la mï¿½me case que le bateau actuel
 	 * Retourne FALSE si ce n'est pas le cas  
 	 */
 	public boolean chevauche(Navire navire) {
-		boolean chevauche = false;		
-		
-		if (navire.debut.ligne >= this.debut.ligne && navire.fin.ligne <= this.fin.ligne) {
-			if (navire.debut.colonne >= this.debut.colonne && navire.fin.colonne <= this.fin.colonne) { 
-				chevauche = true;
+		boolean chevauche = false;
+
+		for (int i = 0; i < this.coordNavire.size(); i++) {
+			for(int k = 0; k < navire.coordNavire.size(); k++) {
+				if (this.coordNavire.get(i).equals(navire.coordNavire.get(k))) {
+					chevauche = true;
+				}
 			}
 		}
 		
@@ -133,7 +179,7 @@ public class Navire {
 	
 	
 	/*  ---------------
-	 *  MÉTHODES PRIVÉS
+	 *  Mï¿½THODES PRIVï¿½S
 	 */
 	
 	/*

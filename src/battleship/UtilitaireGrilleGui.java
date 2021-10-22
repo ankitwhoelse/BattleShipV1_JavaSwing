@@ -1,6 +1,8 @@
 package battleship;
 
 
+import com.sun.jmx.snmp.agent.SnmpGenericObjectServer;
+
 import java.awt.Color;
 /**
  * Solution du tp1A21 inf111
@@ -9,7 +11,9 @@ import java.awt.Color;
  * le gui pour aider l'utilisateur � jouer � la bataille navale tel que d�crit
  * dans l'�nonc� fourni.
  * 
- * @author Pierre B�lisle 
+ * @author Pierre B�lisle
+ * @author Mohamed-Amine Djelloud
+ * @author Ankit Patel
  * @version Copyright A2021
  *
  */
@@ -35,9 +39,9 @@ public class UtilitaireGrilleGui {
 	 * 
 	 * Change la couleur de fond des cases � la position des navires.
 	 * 
-	 * @param grilleJeu  La grille contenant les navires
+	 *
 	 * @param gui L'interface graphique � remplir
-	 * @param pourc Le pourcentage de la grille � mettre dans le gui
+	 * @param flotte collection des navires
 	 */
 	public static void montrerFlotte(Flotte flotte, GrilleGui gui){
 
@@ -47,8 +51,28 @@ public class UtilitaireGrilleGui {
 		 * du navire.
 		 */
 
+		for (Navire nav: flotte.getTabNavires()) {
+			for (int i = 0; i < nav.longeur;i++){
+				if(nav.fin.colonne == nav.debut.colonne){
+					Coord coord = new Coord((nav.debut.ligne + i),nav.debut.colonne);
+					gui.setValeur(coord, Constantes.VIDE_GUI);
+					setCouleurFondCase(gui,coord,nav.couleur);
+
+
+				}
+
+				if(nav.fin.ligne == nav.debut.ligne){
+					Coord coord = new Coord(nav.debut.ligne,(nav.debut.colonne + i));
+					gui.setValeur(coord, Constantes.VIDE_GUI);
+					setCouleurFondCase(gui,coord,nav.couleur);
+				}
+
+			}
+
+		}
 
 		// � vous de jouer
+
 	}
 
 	/**
@@ -56,7 +80,7 @@ public class UtilitaireGrilleGui {
 	 * 
 	 * @param gui
 	 * @param coord
-	 * @param valeur
+	 * @param
 	 */
 	public static void afficherTir(GrilleGui gui, Coord coord){
 		
