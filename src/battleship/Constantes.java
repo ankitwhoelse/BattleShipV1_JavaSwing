@@ -1,12 +1,11 @@
 package battleship;
-
 import java.awt.Color;
 
 /**
- * Contient les dï¿½clarations de constantes globales pour le projet de bataille
+ * Contient les déclarations de constantes globales pour le projet de bataille
  * navale. 
  *  
- * @author Pierre Bï¿½lisle 
+ * @author Pierre Bélisle 
  * @version Copyright A2021
  */
 public class Constantes {
@@ -28,9 +27,9 @@ public class Constantes {
 	// Vide une case dans le gui avec setValeur.
 	public static final String VIDE_GUI = " ";
 
-	// Nï¿½cessaire ï¿½ l'affichage des options du menu.
+	// Nécessaire à l'affichage des options du menu.
 	public static final String[] OPTIONS = 
-		{"Premiï¿½re fois", "Debutant", "Intermediaire", "Avance", "Expert"};
+		{"Première fois", "Debutant", "Intermediaire", "Avance", "Expert"};
 
 	// Position dans le tableau des options du menu.
 	public static final int PREMIERE_FOIS = 0;
@@ -39,7 +38,7 @@ public class Constantes {
 	public static final int AVANCE = 3;
 	public static final int EXPERT = 4;
 	
-	// Taille de la grille de jeu (ï¿½ ajuster pour que tout le projet s'adapte).
+	// Taille de la grille de jeu (à ajuster pour que tout le projet s'adapte).
 	public static final int TAILLE = 10;
 	
 	// Les noms de bateaux.

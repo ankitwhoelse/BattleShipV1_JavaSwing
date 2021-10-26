@@ -1,22 +1,21 @@
 package battleship;
-
 /**
- * Cet enregistrement reprï¿½sente les coordonnï¿½es 
- * possible dans diffï¿½rents jeux de grille.
+ * Cet enregistrement représente les coordonnées 
+ * possible dans différents jeux de grille.
  * 
- *@author Pierre Bï¿½lisle
+ *@author Pierre Bélisle
  *@version Copyright A2021
  */
 public class Coord {
 
 	/*
-	 * Les attributs conservï¿½s.
+	 * Les attributs conservés.
 	 */
 	int ligne;
 	int colonne;
 
 	/**
-	 * Constructeur par dï¿½faut (0,0)
+	 * Constructeur par défaut (0,0)
 	 */
 	public Coord(){
 		ligne = 0;
@@ -35,11 +34,11 @@ public class Coord {
 	}
 
 	/**
-	 * Mï¿½thode qui compare les lignes et les colonnes des deux coordonnï¿½es
+	 * Méthode qui compare les lignes et les colonnes des deux coordonnées
 	 * (this et coord)
 	 * 
-	 * @param coord La coordonnï¿½e de comparaison.
-	 * @return Si coord est ï¿½gal ï¿½ this (deep equals)
+	 * @param coord La coordonnée de comparaison.
+	 * @return Si coord est égal à this (deep equals)
 	 */
 	public boolean equals(Coord coord){
 		return coord.ligne == ligne && coord.colonne == colonne;
@@ -48,7 +47,7 @@ public class Coord {
 	/**
 	 * Une version String d'un Coord.
 	 * 
-	 * @return Une chaï¿½ne de caractï¿½res formatï¿½e "(x,y)"
+	 * @return Une chaîne de caractères formatée "(x,y)"
 	 */
 	
 	public String toString(){
