@@ -44,7 +44,7 @@ public class DemarrerBatailleNavale {
 	static int nbRepetitions = 0;
 	static int nbTirs = 0;
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 
 		// Création de l'interface graphique qui permet de jouer. 
 		GrilleGui gui = new GrilleGui(Constantes.TAILLE, Constantes.TAILLE,
@@ -81,7 +81,7 @@ public class DemarrerBatailleNavale {
 	 * Procédure qui 
 	 * @param gui
 	 */
-	public static void demarrerModeOrdi(GrilleGui gui){
+	public static void demarrerModeOrdi(GrilleGui gui) throws Exception {
 
 		// On crée une nouvelle flotte aléatoire et on la montre.
 		Flotte flotteOrdi = Flotte.obtenirFlotteAleatoire();
@@ -216,7 +216,9 @@ public class DemarrerBatailleNavale {
 			case Constantes.INTERMEDIAIRE : {  
 				
 				// Écrivez le code nécessaire ici
-				
+				tir =((JoueurIntermediaire) ordi).getTir();
+
+
 			}break;
 	
 			case Constantes.AVANCE : {
@@ -257,7 +259,9 @@ public class DemarrerBatailleNavale {
 			case Constantes.INTERMEDIAIRE :{  
 				
 				// Écrivez le code nécessaire ici
-				
+				((JoueurIntermediaire) ordi).aviseTouche(tir);
+
+
 			}break;
 	
 			case Constantes.AVANCE :{

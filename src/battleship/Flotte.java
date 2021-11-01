@@ -223,10 +223,12 @@ public class Flotte {
    /* crée une flotte, génère la position des
         navires aléatoire  et la retourne.
         */
-    public ArrayList<Navire> obtenirFlotteAleatoire() throws Exception {
+    public static Flotte obtenirFlotteAleatoire() throws Exception {
 
-        genererPosNavireAleaInsererDsGrille();
+        Flotte flotte = new Flotte();
+        flotte.genererPosNavireAleaInsererDsGrille();
+        flotte = new Flotte(flotte.lstNavire);
 
-        return lstNavire;
+        return flotte;
     }
 }

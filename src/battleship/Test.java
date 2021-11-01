@@ -12,7 +12,7 @@ package battleship;
  */
 public class Test {
     public static void main(String[] args) {
-        UtilitaireGrilleGui gui = new UtilitaireGrilleGui();
+        /*UtilitaireGrilleGui gui = new UtilitaireGrilleGui();
         GrilleGui g = new GrilleGui(Constantes.TAILLE,Constantes.TAILLE,Constantes.COULEUR_TEXTE,Constantes.COULEUR_FOND,Constantes.OPTIONS,0);
 
         Flotte flotte =new Flotte();
@@ -22,6 +22,6 @@ public class Test {
             gui.montrerFlotte(flotte, g);
         }catch (Exception e ){
             System.out.println(e.getMessage());
-        }
+        }*/
     }
 }

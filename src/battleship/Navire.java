@@ -36,6 +36,7 @@ public class Navire {
 		
 		int ligne = fin.ligne - debut.ligne;
 		int colonne = fin.colonne - debut.colonne;
+		coupTouche = new ArrayList<>();
 		coordNavire = new ArrayList<>();
 		// Ligne invalide
 		if (ligne+1 > Constantes.TAILLE || debut.ligne > fin.ligne ) {
