@@ -258,7 +258,9 @@ public class DemarrerBatailleNavale {
 				
 			case Constantes.INTERMEDIAIRE :{  
 				
-				// Écrivez le code nécessaire ici
+				// Écrivez le code nécessaire ici				
+					// seulement aviser si on a toucher le bateau?
+				
 				((JoueurIntermediaire) ordi).aviseTouche(tir);
 
 

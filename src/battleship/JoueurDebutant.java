@@ -34,8 +34,6 @@ public class JoueurDebutant {
 		/*
 		 * Stratégie : On obtient un coup pas déjà joué du module de collection
 		 * et on l'ajoute à la collection.
-		 *                  
-		 * La méthode a été mise dans UtilitaireCollection pour réutilisation 
 		 */
 		Coord c = UtilitaireCollection.obtenirCoupPasDejaJouer(tabCoups);  
 				
