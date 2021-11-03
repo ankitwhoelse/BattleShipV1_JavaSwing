@@ -224,7 +224,9 @@ public class DemarrerBatailleNavale {
 			case Constantes.AVANCE : {
 				
 				// Écrivez le code nécessaire ici
-				
+				tir =((JoueurAvance) ordi).getTir();
+
+
 			}break;
 			
 			case Constantes.EXPERT :  {
@@ -269,7 +271,7 @@ public class DemarrerBatailleNavale {
 			case Constantes.AVANCE :{
 				
 				// Écrivez le code nécessaire ici
-				
+				((JoueurAvance) ordi).aviseTouche(tir);
 			}break;
 			
 			case Constantes.EXPERT :  {
