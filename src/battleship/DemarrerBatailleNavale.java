@@ -131,10 +131,11 @@ public class DemarrerBatailleNavale {
 		}	
 		
 		// Le choix expert.
-		else
-			if(JOptionPane.showConfirmDialog(null,"Pas encore implémenté") == 
-			JOptionPane.CANCEL_OPTION)
-				System.exit(0);
+		else if (menu.equals(Constantes.OPTIONS[Constantes.EXPERT])){
+
+			JoueurExpert ordi = new JoueurExpert();
+			demarrerPartie(ordi, flotteOrdi, Constantes.EXPERT, gui);
+		}
 	}
 
 	/**
@@ -232,7 +233,7 @@ public class DemarrerBatailleNavale {
 			case Constantes.EXPERT :  {
 	
 				// Écrivez le code nécessaire ici
-	
+				tir = ((JoueurExpert) ordi).getTir();
 			}break;
 		
 		}
@@ -277,7 +278,7 @@ public class DemarrerBatailleNavale {
 			case Constantes.EXPERT :  {
 	
 				// Écrivez le code nécessaire ici
-	
+				((JoueurExpert) ordi).aviseTouche(tir);
 			}break;
 			
 		}

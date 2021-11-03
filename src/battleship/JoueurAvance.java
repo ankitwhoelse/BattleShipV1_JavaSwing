@@ -26,10 +26,10 @@ public class JoueurAvance extends JoueurIntermediaire{
     public Coord getTir(){
 
         /*
-         * Strat√©gie : On obtient un coup pas d√©j√† jou√© du module de collection
-         * et on l'ajoute √† la collection.
-         *
-         * La m√©thode a √©t√© mise dans UtilitaireCollection pour r√©utilisation
+		 * StratÈgie : On obtient un coup pas dÈj‡ jouÈ du module de collection
+		 * et on l'ajoute ‡ la collection.
+		 *                  
+		 * La mÈthode a ÈtÈ mise dans UtilitaireCollection pour rÈutilisation 
          */
 
 
@@ -40,8 +40,8 @@ public class JoueurAvance extends JoueurIntermediaire{
             coord2 = this.tabCoupsAdjacent.remove(0);
             System.out.println("TIR AVI sur coord: (" + coord2.ligne + ", " + coord2.colonne + ")");
         } else {
-            // Le prochain coups est un coup aleatoire, jamais joue
-            //      c = UtilitaireCollection.obtenirCoupPasDejaJouer(this.tabCoups);
+            // Le prochain coups en diagonale
+        	
             if(coord.colonne == 9 && coord.ligne == 9){
                 booDiagonaleDeux =true;
                 coord.ligne = -1;
